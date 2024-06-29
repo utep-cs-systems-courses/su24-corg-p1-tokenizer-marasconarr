@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <string.h>
+#include "tokenizer.h"
+#include "history.h"
+#define MAX_INPUT 250
+
+
+int main() {
+  //initalize everything that is used 
+    char menu_input[MAX_INPUT];
+    char input[MAX_INPUT];
+
+
+ menu:
+      display_main_menu();
+      while((inout = getchar()) != EOF ){
+	while(getchar()) != '\n'){}
+	switch (input){
+	case 't':
+	  
+	  goto tokenizer;
+	case 'h':
+	  goto history;
+        case 'q':
+	  printf("quitting program /n");
+	  break;
+	default:
+	  printf("option not available, please refer to menu and try again \n");
+	  goto menu;
+	}
+
+       
+      
+
+tokenizer:
+     printf("enter a string you would like to tokenize: \n");
+     printf("$ ");
+     fgets(input, MAX_INPUT, stdin);
+     char *p = input;
+     printf("This token is added to your histoy");
+     add_history(list, input);
+     goto menu;
+
+ 
+
+history:
+     history_menu();
+     fgets(input, MAX_LENGTH,stdin);
+     switch(input){
+     case 'm':
+       
+     }
+     
+
+}
+    
+    //main menu selection
+    void display_main_menu(){
+      printf("Welcome to Tokenizer! please enter your options from below");
+      printf( " 't' to tokenize , 'h for history, ''q' to quit program");
+      printf ("\n$");
+    } 
+void history_menu(){
+  printf("Please enter from following option \n");
+  printf("'m' go back to main menu ");
+  printf(" '!' display all history");
+  printf(" '!(number)' display history Item ");
+  printf("'c' clear current history");
+  printf("'$ '");
+  
+
+}
+    
+      //t for tokenizer, h for history, 
+      /* printf("\n$ "); 
+        if (fgets(input, MAX_INPUT_LENGTH, stdin)) {
+            break;  
+	}
+	input[strcspn(input, "\n")] = 'j\0';
+
+	if (strcmp(input, "q") == 0) {
+            printf("Quitting the program.\n");
+            break;
+        }
+	input[strcspn(input, "\n")] = '\0'; 
+        printf("%s\n", input);
+
+      */	
+    
+
+    return 0;
+}

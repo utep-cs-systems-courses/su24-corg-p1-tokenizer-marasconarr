@@ -1,0 +1,75 @@
+#include "history.h"
+#include <stdio.h>
+#include<stdlib.h>
+#include "tokenizer.h"
+
+//initalize
+
+List* init_history(){
+  List *token_history;
+  token_history = malloc(sizeof(List));
+  return token_history;
+  
+}
+
+
+//add histiry item
+void add_history(List *list, char *str){
+  if(list->head ==0){
+    Item *newNode = malloc(sizeof(Item));
+    int strLen = string_length_full(str);
+    newNode ->str = copy_str(str,strLen);
+    newNode->next = 0;
+    list ->head = newNode;
+  }
+  else{
+    Item *currItem = list->head;
+    while(currItem-> !=0){
+      currItem = currItem->next;
+    }
+    Item *newNode = malloc (sizeof(Item));
+    int strLen = string_length_full(str);
+    newNode->str = copy_str(str,strLen);
+    newNode->next = 0;
+    currItem->next = newNode;
+  }
+}
+
+
+//retrieve string
+char *get_history(List *list, int id){
+  Item *current = list -> root;
+  while (current != Null){
+    if(current -> id == id ){
+      return current ->str;
+    }
+    current = current ->next;
+  }
+  return NULL;
+}
+
+
+//print history
+void print_history(List *list){
+  Item *curr = list -> root;
+  int i = 1;
+  if (list != NULL){
+    printf("[%d]%s", i curr ->);
+    curr = curr -> next;
+    i++;
+  }
+  else{
+    printf("Empty");
+      return;  
+      }
+  
+}
+
+
+//free history
+void free_history(List *list)
+if (list == NULL)
+  return;
+free_nodes(list ->root);
+free(list);
+return;
